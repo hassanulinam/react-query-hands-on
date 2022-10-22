@@ -16,7 +16,9 @@ const RQSuperHero = () => {
       <button>
         <Link to="/rq-super-heroes">Go back</Link>
       </button>
-      <h1>{data?.data.name}</h1>
+      <h1>
+        {data?.data.name} -{data?.data.alterEgo}
+      </h1>
     </>
   );
 };
