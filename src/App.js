@@ -8,28 +8,36 @@ import { SuperHeroesPage } from "./components/SuperHeroes.page";
 import RQSuperHero from "./components/RQSuperHero.page";
 import DynamicParallel from "./components/DynamicParallel.page";
 import PaginatedQueries from "./components/PaginatedQueries.page";
+import InfiniteQueries from "./components/InfiniteQueries.page";
 
 const queryClient = new QueryClient();
+
+const Header = () => (
+  <nav>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/super-heroes">Traditional Super Heroes</Link>
+      </li>
+      <li>
+        <Link to="/rq-super-heroes">RQ Super Heroes</Link>
+      </li>
+    </ul>
+  </nav>
+);
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/super-heroes">Traditional Super Heroes</Link>
-              </li>
-              <li>
-                <Link to="/rq-super-heroes">RQ Super Heroes</Link>
-              </li>
-            </ul>
-          </nav>
+          <Header />
           <Switch>
+            <Route path="/rq-infinite">
+              <InfiniteQueries />
+            </Route>
             <Route path="/rq-paginated">
               <PaginatedQueries />
             </Route>
